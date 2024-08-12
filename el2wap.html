@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Demonstration</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+.jumbotron {
+    background-color: #333;
+    text-align: center;
+    color: #fff;
+}
+
+.navbar {
+    background-color: #007bff;
+}
+
+.navbar-brand {
+    color: #fff;
+}
+
+.container-fluid {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.col-sm-3 {
+    padding: 20px;
+}
+
+.btn-primary {
+    margin-top: 10px;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+</style>
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h3>This is the website demonstration</h3>
+        <p>This website is built using the Bootstrap framework. The jumbotron class is used to get the grey background color and text-center is used to align the text to the center.</p>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Website</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Terms</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Demonstration of row column</h3>
+            <p>This image demonstrates responsiveness in Bootstrap. You can click on the button below to know more about the image.</p>
+        </div>
+        <div class="col-sm-4">
+            <h3>Demonstration of row column</h3>
+            <p>This image demonstrates responsiveness in Bootstrap. You can click on the button below to know more about the image.</p>
+        </div>
+        <div class="col-sm-4">
+            <h3>Demonstration of row column</h3>
+            <p>This image demonstrates responsiveness in Bootstrap. You can click on the button below to know more about the image.</p>
+        </div>
+    </div>
+</div>
+
+<div id="im" class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 img-container">
+            <img src="r1.webp" alt="Image 1">
+            <button class="btn btn-primary">Click It</button>
+        </div>
+        <div class="col-md-4 img-container">
+            <img class="img-thumbnail" src="r2.webp" alt="Image 2">
+            <button class="btn btn-primary">Click It</button>
+        </div>
+        <div class="col-md-4 img-container">
+            <img class="rounded-circle" src="r3.jpeg" alt="Image 3" width="400px">
+            <button class="btn btn-primary">Click It</button>
+        </div>
+   </div>
+</div>
+</body>
+</html>
+

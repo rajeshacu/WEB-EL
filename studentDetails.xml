@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<studentDetails>
+<student>
+<name>Ash</name>
+<USN>1RV23MC001</USN>
+<SAPID>RVCE23MCA001</SAPID>
+</student>
+<student>
+<name>Anu</name>
+<USN>1RV23MC002</USN>
+<SAPID>RVCE23MCA002</SAPID>
+</student>
+<student>
+<name>Arun</name>
+<USN>1RV23MC003</USN>
+<SAPID>RVCE23MCA003</SAPID>
+</student>
+</studentDetails>

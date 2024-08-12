@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Creation & DOM Events</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <style>
+      .container {
+        padding-top: 2%;
+
+      }
+      #heading{
+        display: none;
+      }
+      h3{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jumbotron">
+        <h3 id="heading">Different ways of creating
+            objects and nested objects & Different kinds of DOM events</h1>
+    </div>
+    <div class="container offset-4">
+       
+      <button class="btn btn-sm btn-primary" id="button1">Click</button>
+    </div>
+
+    <script>
+      function myFun() {
+        console.log("Key Up Function");
+      }
+
+      function changeStyle(){
+        document.getElementById("heading").style.color="rgba(100,140,190,0.9)";
+      }
+
+      function revert(){
+        document.getElementById("heading").style.color="black";
+      }
+
+      document.getElementById("button1").addEventListener("click", function () {
+        console.log("Button 1 clicked");
+        document.getElementById("heading").style.display="block";
+      });
+      
+
+      //Using Object Literal
+      let person1 = {
+        firstName: "person1",
+        lastName: "sirname",
+        age: 30,
+        address: {
+          city: "bengaluru",
+          country: "India",
+        },
+      };
+      console.log("Object Creation Using Object Literal");
+      console.log("First Name: " + person1.firstName);
+      console.log("Address: " + person1.address.country);
+
+      //Using New Keyword
+      let person2 = new String();
+      person2.fName = "person2";
+      person2.lName = "sirname";
+      console.log("\nObject Creation Using new Keyword");
+      console.log("First Name of person2: " + person2.fName);
+
+      //Using a constructor Function
+      function Person(Name, age, state) {
+        this.Name = Name;
+        this.age = age;
+        this.state = state;
+      }
+      const person3 = new Person("person3", 25, "Karnataka");
+      console.log("\nObject Creation Using Constructor function");
+      console.log("Age of person3: " + person3.age);
+
+      //Using Object.Create function
+      const person4 = Object.create(null);
+      person4.Name = "person4";
+      console.log("\nObject Creation using Object.create()");
+      console.log("USN of person 4: ", person4.Name);
+
+      console.log("\n\n");
+    </script>
+  </body>
+</html>

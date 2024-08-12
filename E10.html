@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Graph with D3.js</title>
+    <style>
+        #graph-container {
+            width: 50%;
+            height: 300px;
+            margin: 120px auto;
+            border: 1px solid #ccc;
+        }
+
+        .bar {
+            fill: steelblue;
+            transition: fill 0.3s;
+        }
+
+        .bar:hover {
+            fill: #1E90FF; /* Change color on hover */
+        }
+
+        .bar text {
+            fill: white;
+            font-size: 14px;
+            text-anchor: middle;
+        }
+    </style>
+</head>
+<body>
+    <div id="graph-container"></div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        const data = [10, 20, 30, 40, 50];
+
+        const width = 500;
+        const height = 300;
+
+        const svg = d3.select("#graph-container").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        const xScale = d3.scaleBand()
+            .domain(d3.range(data.length))
+            .range([0, width])
+            .padding(0.1);
+
+        const yScale = d3.scaleLinear()
+            .domain([0, d3.max(data)])
+            .range([height, 0]);
+
+        svg.selectAll(".bar")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("class", "bar")
+            .attr("x", (d, i) => xScale(i))
+            .attr("y", d => yScale(d))
+            .attr("width", xScale.bandwidth())
+            .attr("height", d => height - yScale(d))
+            .append("title") // Tooltip on hover
+            .text(d => `Value: ${d}`);
+
+        // Add values on top of bars
+        svg.selectAll("text")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("x", (d, i) => xScale(i) + xScale.bandwidth() / 2)
+            .attr("y", d => yScale(d) - 5) // Adjust position for better visibility
+            .attr("text-anchor", "middle")
+            .text(d => d);
+    </script>
+</body>
+</html>

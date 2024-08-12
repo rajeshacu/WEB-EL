@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #heading {
+            background-color: #6495ed;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button {
+            margin-top: 10px;
+            font-weight: bold;
+            border-radius: 10px;
+            background-color: #6495ed;
+            font-size: larger;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        ol {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="heading"><h1>Fetching Student Data From an XML File</h1></div>
+    <div id="container"></div>
+    <button onclick="display()">Click here</button>
+    <script>
+        function display() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "studentDetails.xml", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    const xmlDoc = xhr.responseXML;
+                    let x = xmlDoc.getElementsByTagName("student");
+                    var list = "<ol>"
+                    for (let i = 0; i < x.length; i++) {
+                        let Stdname = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+                        let USN = x[i].getElementsByTagName("USN")[0].childNodes[0].nodeValue;
+                        let SAP = x[i].getElementsByTagName("SAPID")[0].childNodes[0].nodeValue;
+
+                        list += `<li>Student Name: ${Stdname}</li><ul><li>USN: ${USN} </li><li>SAPID:  ${SAP}</li></ul>`
+                    }
+                    list += "</ol>"
+                    document.getElementById("heading").innerHTML = "<h1>Student Details</h1>"
+                    document.getElementById("container").innerHTML = list;
+                    document.getElementById("btn1").style.display = "none";
+                }
+            }
+            xhr.send()
+        }
+    </script>
+</body>
+</html>

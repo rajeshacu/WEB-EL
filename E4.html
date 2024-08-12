@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stack</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<style>
+  body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+  .jumbotron {
+    background-color: #343a40;
+    color: #fff;
+    margin-bottom: 0;
+  }
+  .form-row {
+    margin-bottom: 20px;
+  }
+  .form-label {
+    font-weight: bold;
+    color: #343a40;
+  }
+  #disp {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <h1 class="display-3">Stack Implementation Using Arrays</h1>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="form-row">
+    <label for="element" class="col-lg-4 form-label">Enter element to push:</label>
+    <input type="text" class="form-control col-lg-8" name="ele" id="ele">
+  </div>
+  <button type="button" class="btn btn-primary" onclick="pushEle()">PUSH</button>
+  <button type="button" class="btn btn-primary" onclick="popEle()">POP</button>
+  <br><br>
+  <p id="disp"></p>
+</div>
+<script>
+  var stack = [];
+  var max = 10;
+  var topEle = 0;
+
+  function pushEle() {
+    var x = document.getElementById("ele").value;
+    if (topEle < max) {
+      stack.push(x);
+      document.getElementById("disp").innerHTML = "Stack Elements are: " + stack;
+      topEle += 1;
+    } else {
+      document.getElementById("disp").innerHTML = "Overflow <br> Stack Elements are: " + stack;
+    }
+  }
+
+  function popEle() {
+    if (topEle > 0) {
+      document.getElementById("disp").innerHTML = "Popped element: " + stack.pop()+`<br> Stack Elements are: `+stack;
+
+      topEle -= 1;
+    } else {
+      document.getElementById("disp").innerHTML = "Stack Underflow !!";
+    }
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

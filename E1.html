@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regular Expression Validation</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:green;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  form {
+    /* max-width: 400px; */
+    width: 30%;
+    padding: 30px;
+    background-color: #25b1bb;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  label {
+    font-size: 2rem;
+    color: #050505;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #10f01b;
+  }
+</style>
+</head>
+<body>
+
+<form id="validationForm">
+  <h1>Regular Expression Validation</h1>
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username">
+  <span id="usernameError" class="error"></span>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password">
+  <span id="passwordError" class="error"></span>
+
+  <div>  <button type="button" onclick="validateForm()">Submit</button></div>
+
+</form>
+
+<script>
+function validateForm() {
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  var usernameError = document.getElementById("usernameError");
+  var passwordError = document.getElementById("passwordError");
+  var isValid = true;
+
+  // Regular expressions for validation
+  var  emailRegex = /^[a-zA-Z][a-zA-Z0-9]*(?:\.[a-zA-Z0-9]+){1}@rvce\.edu\.in$/; // Alphanumeric and underscore
+  var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/;
+
+
+  // Username validation
+  if (!emailRegex.test(username)) {
+    usernameError.textContent = " Your email address must start with an alphabet character, followed by any combination of alphanumeric characters or dots. After the first dot, there must be at least one more alphanumeric character. Finally, it must end with '@rvce.edu.in.";
+    isValid = false;
+  } else {
+    usernameError.textContent = "";
+  }
+
+  // Password validation
+  if (!passwordRegex.test(password)) {
+    passwordError.textContent = "Error: Your password must be at least 12 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character."
+    isValid = false;
+  } else {
+    passwordError.textContent = "";
+  }
+
+  // If form is valid, submit it
+  if (isValid) {
+    alert("Form submitted successfully!");
+    // Uncomment the line below to submit the form
+    // document.getElementById("validationForm").submit();
+  }
+}
+</script>
+</body>
+</html>
+
+<!-- (?=.*[a-z]): This positive lookahead assertion checks if there is at least one lowercase letter ahead in the string. -->
+<!-- (?=.*[A-Z]): This positive lookahead assertion checks if there is at least one uppercase letter ahead in the string. -->
+<!-- (?=.*\d): This positive lookahead assertion checks if there is at least one digit ahead in the string. -->
+<!-- (?=.*[@$!%*?&]): This positive lookahead assertion checks if there is at least one special character ahead in the string. -->

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+  .container {
+    margin-top: 50px;
+  }
+  .jumbotron {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  h1 {
+    font-size: 36px;
+  }
+  label {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  #countdown {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Countdown to an Event</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="startDateInput">Start Date:</label>
+        <input type="date" id="startDateInput">
+      </div>
+      <div class="col-md-6">
+        <label for="targetDateInput">Target Date:</label>
+        <input type="date" id="targetDateInput">
+      </div>
+    </div>
+    <p id="countdown"></p>
+  </div>
+</div>
+<script>
+  var countdownInterval;
+
+  function startCountdown() {
+    var startDate = document.getElementById("startDateInput").value;
+    var targetDate = document.getElementById("targetDateInput").value;
+
+    var start = new Date(startDate);
+    var target = new Date(targetDate);
+
+    const startSec = start.getTime();
+    const targetSec = target.getTime();
+    if(startSec>targetSec){
+        document.getElementById("countdown").innerHTML="START DATE CANNOT BE LESS THAN TARGET DATE!";
+        return;
+      }
+
+
+    countdownInterval = setInterval(function() {
+      var now = new Date();
+      var nowSec = start.getTime();
+      var valSec = targetSec - nowSec;
+
+     
+      if (valSec > 0) {
+        document.getElementById("countdown").innerHTML =
+          Math.floor(valSec / (1000 * 60 * 60 * 24)) + " Days " +
+          Math.floor((valSec / (1000 * 60 * 60)) % 24) + " Hours " +
+          Math.floor((valSec / (1000 * 60)) % 60) + " Mins " +
+          Math.floor((valSec / 1000) % 60) + " Sec TO GO..";
+      } else {
+        document.getElementById("countdown").innerHTML = "EVENT HAS HAPPENED !!!";
+        clearInterval(countdownInterval);
+      }
+    }, 1000);
+  }
+
+  // Call startCountdown when the page loads
+  window.onload = startCountdown;
+</script>
+</body>
+</html>
